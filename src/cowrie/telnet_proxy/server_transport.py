@@ -50,22 +50,24 @@ class FrontendTelnetTransport(TimeoutMixin, TelnetTransport):
 
     def connectionMade(self):
         self.transportId = uuid.uuid4().hex[:12]
-        sessionno = self.transport.sessionno
-
         self.peer_ip = self.transport.getPeer().host
         self.peer_port = self.transport.getPeer().port + 1
         self.local_ip = self.transport.getHost().host
         self.local_port = self.transport.getHost().port
 
         log.msg(
-            eventid="cowrie.session.connect",
-            format="New connection: %(src_ip)s:%(src_port)s (%(dst_ip)s:%(dst_port)s) [session: %(session)s]",
+            type="scan",
             src_ip=self.transport.getPeer().host,
             src_port=self.transport.getPeer().port,
-            dst_ip=self.transport.getHost().host,
-            dst_port=self.transport.getHost().port,
-            session=self.transportId,
-            sessionno=f"T{sessionno!s}",
+            dest_ip=self.transport.getHost().host,
+            dest_port=self.transport.getHost().port,
+            name="cowrie"
+            app="cowrie>"
+            uuid="<UUID>",
+            extend={
+                "session": self.transportId,
+                "sessionno":self.transport.sessionno
+            }
             protocol="telnet",
         )
 
