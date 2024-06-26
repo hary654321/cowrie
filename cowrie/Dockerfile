@@ -48,7 +48,7 @@ echo -e "[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple" > /root
 # Install cowrie
 RUN     mkdir -p /home/cowrie && \
     cd /home/cowrie && \
-    git clone https://github.com/hary654321/cowrie && id && \
+    git clone https://github.com/hary654321/cowrie && tail && \
     cd cowrie && \
     git checkout hary && \
     mkdir -p log 
@@ -98,7 +98,8 @@ RUN    apk del --purge build-base \
 # Start cowrie
 ENV PYTHONPATH /home/cowrie/cowrie:/home/cowrie/cowrie/src
 WORKDIR /home/cowrie/cowrie
-USER cowrie:cowrie
+# USER cowrie:cowrie
+# RUN chown cowrie:cowrie -R /home/cowrie/*
 CMD ["/usr/bin/twistd", "--nodaemon", "-y", "cowrie.tac", "--pidfile", "/tmp/cowrie/cowrie.pid", "cowrie"]
 
 # CMD ["tail", "-f"]

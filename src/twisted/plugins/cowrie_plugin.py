@@ -127,9 +127,9 @@ Makes a Cowrie SSH/Telnet honeypot.
             )
             sys.exit(1)
 
-        if os.name == "posix" and os.getuid() == 0:
-            print("ERROR: You must not run cowrie as root!")  # noqa: T201
-            sys.exit(1)
+        # if os.name == "posix" and os.getuid() == 0:
+        #     print("ERROR: You must not run cowrie as root!")  # noqa: T201
+        #     sys.exit(1)
 
         tz: str = CowrieConfig.get("honeypot", "timezone", fallback="UTC")
         # `system` means use the system time zone
