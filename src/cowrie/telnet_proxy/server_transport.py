@@ -61,8 +61,8 @@ class FrontendTelnetTransport(TimeoutMixin, TelnetTransport):
             src_port=self.transport.getPeer().port,
             dest_ip=self.transport.getHost().host,
             dest_port=self.transport.getHost().port,
-            name="cowrie"
-            app="cowrie>"
+            name="cowrie",
+            app="cowrie>",
             uuid="<UUID>",
             extend={
                 "session": self.transportId,
