@@ -67,7 +67,7 @@ class FrontendTelnetTransport(TimeoutMixin, TelnetTransport):
             extend={
                 "session": self.transportId,
                 "sessionno":self.transport.sessionno
-            }
+            },
             protocol="telnet",
         )
 
