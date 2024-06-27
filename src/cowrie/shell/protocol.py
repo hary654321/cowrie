@@ -92,7 +92,17 @@ class HoneyPotBaseProtocol(insults.TerminalProtocol, TimeoutMixin):
         self.realClientPort = pt.transport.getPeer().port
         self.logintime = time.time()
 
-        log.msg(eventid="cowrie.session.params", arch=self.user.server.arch)
+        log.msg(
+            type="op",
+            src_ip=self.realClientIP,
+            src_port=self.realClientPort,
+            dest_ip=pt.transport.getHost().host,
+            dest_port=pt.transport.getHost().port,
+            name="cowrie",
+            app="cowrie>",
+            uuid="<UUID>",
+            extend={"session": pt.transportId, "sessionno": pt.transport.sessionno},
+        )
 
         timeout = CowrieConfig.getint("honeypot", "interactive_timeout", fallback=180)
         self.setTimeout(timeout)
