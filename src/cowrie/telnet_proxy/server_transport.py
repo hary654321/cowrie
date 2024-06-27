@@ -62,12 +62,9 @@ class FrontendTelnetTransport(TimeoutMixin, TelnetTransport):
             dest_ip=self.transport.getHost().host,
             dest_port=self.transport.getHost().port,
             name="cowrie",
-            app="cowrie>",
+            app="cowrie",
             uuid="<UUID>",
-            extend={
-                "session": self.transportId,
-                "sessionno":self.transport.sessionno
-            },
+            extend={"session": self.transportId, "sessionno": self.transport.sessionno},
             protocol="telnet",
         )
 

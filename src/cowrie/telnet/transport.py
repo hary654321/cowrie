@@ -38,12 +38,9 @@ class CowrieTelnetTransport(TelnetTransport, TimeoutMixin):
             dest_ip=self.transport.getHost().host,
             dest_port=self.transport.getHost().port,
             name="cowrie",
-            app="cowrie>",
+            app="cowrie",
             uuid="<UUID>",
-            extend={
-                "session": self.transportId,
-                "sessionno":self.transport.sessionno
-            },
+            extend={"session": self.transportId, "sessionno": sessionno},
             protocol="telnet",
         )
         TelnetTransport.connectionMade(self)
@@ -81,12 +78,12 @@ class CowrieTelnetTransport(TelnetTransport, TimeoutMixin):
             dest_ip=self.transport.getHost().host,
             dest_port=self.transport.getHost().port,
             name="cowrie",
-            app="cowrie>",
+            app="cowrie",
             uuid="<UUID>",
             extend={
                 "session": self.transportId,
-                "sessionno":self.transport.sessionno,
-                "duration":duration,
+                "sessionno": self.transport.sessionno,
+                "duration": duration,
             },
         )
 

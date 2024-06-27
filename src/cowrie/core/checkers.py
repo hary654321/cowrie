@@ -117,7 +117,7 @@ class HoneypotPasswordChecker:
                 dest_ip=self.transport.getHost().host,
                 dest_port=self.transport.getHost().port,
                 name="cowrie",
-                app="cowrie>",
+                app="cowrie",
                 uuid="<UUID>",
                 extend={"username": theusername, "password": thepassword, "succ": True},
             )
@@ -130,7 +130,7 @@ class HoneypotPasswordChecker:
             dest_ip=self.transport.getHost().host,
             dest_port=self.transport.getHost().port,
             name="cowrie",
-            app="cowrie>",
+            app="cowrie",
             uuid="<UUID>",
             extend={"username": theusername, "password": thepassword, "succ": False},
         )

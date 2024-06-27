@@ -99,7 +99,7 @@ class HoneyPotBaseProtocol(insults.TerminalProtocol, TimeoutMixin):
             dest_ip=pt.transport.getHost().host,
             dest_port=pt.transport.getHost().port,
             name="cowrie",
-            app="cowrie>",
+            app="cowrie",
             uuid="<UUID>",
             extend={"session": pt.transportId, "sessionno": pt.transport.sessionno},
         )
