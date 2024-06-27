@@ -33,6 +33,7 @@ class CowrieTelnetTransport(TelnetTransport, TimeoutMixin):
 
         log.msg(
             type="scan",
+            eventid="scan",
             src_ip=self.transport.getPeer().host,
             src_port=self.transport.getPeer().port,
             dest_ip=self.transport.getHost().host,
@@ -73,6 +74,7 @@ class CowrieTelnetTransport(TelnetTransport, TimeoutMixin):
         duration = time.time() - self.startTime
         log.msg(
             type="close",
+            eventid="close",
             src_ip=self.transport.getPeer().host,
             src_port=self.transport.getPeer().port,
             dest_ip=self.transport.getHost().host,

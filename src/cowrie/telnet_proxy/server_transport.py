@@ -57,6 +57,7 @@ class FrontendTelnetTransport(TimeoutMixin, TelnetTransport):
 
         log.msg(
             type="scan",
+            eventid="scan",
             src_ip=self.transport.getPeer().host,
             src_port=self.transport.getPeer().port,
             dest_ip=self.transport.getHost().host,

@@ -103,6 +103,6 @@ COPY cowrie.cfg /home/cowrie/cowrie
 RUN   mkdir -p /var/log &&   chown cowrie:cowrie -R  /var/log
 WORKDIR /home/cowrie/cowrie
 USER cowrie:cowrie
-# CMD ["/usr/bin/twistd", "--nodaemon", "-y", "cowrie.tac", "--pidfile", "cowrie.pid", "cowrie"]
+CMD ["/usr/bin/twistd", "--nodaemon", "-y", "cowrie.tac", "--pidfile", "cowrie.pid", "cowrie"]
 
-CMD ["tail", "-f"]
+# CMD ["tail", "-f"]

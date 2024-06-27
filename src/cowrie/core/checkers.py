@@ -112,6 +112,7 @@ class HoneypotPasswordChecker:
         if theauth.checklogin(theusername, thepassword, ip):
             log.msg(
                 type="login",
+                eventid="login",
                 src_ip=self.transport.getPeer().host,
                 src_port=self.transport.getPeer().port,
                 dest_ip=self.transport.getHost().host,
@@ -125,6 +126,7 @@ class HoneypotPasswordChecker:
 
         log.msg(
             type="login",
+            eventid="login",
             src_ip=self.transport.getPeer().host,
             src_port=self.transport.getPeer().port,
             dest_ip=self.transport.getHost().host,

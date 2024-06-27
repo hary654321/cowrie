@@ -248,9 +248,17 @@ class HoneyPotSSHTransport(transport.SSHServerTransport, TimeoutMixin):
         duration = time.time() - self.startTime
         log.msg(
             type="close",
+            eventid="close",
+            src_ip=self.transport.getPeer().host,
+            src_port=self.transport.getPeer().port,
+            dest_ip=self.transport.getHost().host,
+            dest_port=self.transport.getHost().port,
+            name="cowrie",
+            app="cowrie",
+            uuid="<UUID>",
             extend={
                 "duration": duration,
-            }
+            },
         )
 
     def sendDisconnect(self, reason, desc):

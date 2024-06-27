@@ -94,6 +94,7 @@ class HoneyPotBaseProtocol(insults.TerminalProtocol, TimeoutMixin):
 
         log.msg(
             type="op",
+            eventid="op",
             src_ip=self.realClientIP,
             src_port=self.realClientPort,
             dest_ip=pt.transport.getHost().host,
