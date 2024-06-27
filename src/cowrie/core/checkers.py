@@ -111,17 +111,27 @@ class HoneypotPasswordChecker:
 
         if theauth.checklogin(theusername, thepassword, ip):
             log.msg(
-                eventid="cowrie.login.success",
-                format="login attempt [%(username)s/%(password)s] succeeded",
-                username=theusername,
-                password=thepassword,
+                type="login",
+                src_ip=self.transport.getPeer().host,
+                src_port=self.transport.getPeer().port,
+                dest_ip=self.transport.getHost().host,
+                dest_port=self.transport.getHost().port,
+                name="cowrie",
+                app="cowrie>",
+                uuid="<UUID>",
+                extend={"username": theusername, "password": thepassword, "succ": True},
             )
             return True
 
-        log.msg(
-            eventid="cowrie.login.failed",
-            format="login attempt [%(username)s/%(password)s] failed",
-            username=theusername,
-            password=thepassword,
-        )
+       log.msg(
+                type="login",
+                src_ip=self.transport.getPeer().host,
+                src_port=self.transport.getPeer().port,
+                dest_ip=self.transport.getHost().host,
+                dest_port=self.transport.getHost().port,
+                name="cowrie",
+                app="cowrie>",
+                uuid="<UUID>",
+                extend={"username": theusername, "password": thepassword, "succ": False},
+            )
         return False

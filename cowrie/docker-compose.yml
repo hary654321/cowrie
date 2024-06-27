@@ -18,12 +18,10 @@ services:
     networks:
      - cowrie_local
     ports:
-     - "222:22"
      - "223:23"
     image: "hary654321/cowrie"
-    read_only: true
     volumes:
      - $PWD/data/cowrie/downloads:/home/cowrie/cowrie/dl
      - $PWD/data/cowrie/keys:/home/cowrie/cowrie/etc
-     - $PWD/data/cowrie/log:/home/cowrie/cowrie/log
-     - $PWD/data/cowrie/log/tty:/home/cowrie/cowrie/log/tty
+    #  - $PWD/data/cowrie/log:/var/log
+     - /mnt/hgfs/go-pro/mg/cowrie:/app

@@ -1,0 +1,1 @@
+ twistd --nodaemon -y cowrie.p --pidfile cowrie.pid cowrie 

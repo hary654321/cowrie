@@ -32,14 +32,18 @@ class CowrieTelnetTransport(TelnetTransport, TimeoutMixin):
         )
 
         log.msg(
-            eventid="cowrie.session.connect",
-            format="New connection: %(src_ip)s:%(src_port)s (%(dst_ip)s:%(dst_port)s) [session: %(session)s]",
+            type="scan",
             src_ip=self.transport.getPeer().host,
             src_port=self.transport.getPeer().port,
-            dst_ip=self.transport.getHost().host,
-            dst_port=self.transport.getHost().port,
-            session=self.transportId,
-            sessionno=f"T{sessionno!s}",
+            dest_ip=self.transport.getHost().host,
+            dest_port=self.transport.getHost().port,
+            name="cowrie",
+            app="cowrie>",
+            uuid="<UUID>",
+            extend={
+                "session": self.transportId,
+                "sessionno":self.transport.sessionno
+            },
             protocol="telnet",
         )
         TelnetTransport.connectionMade(self)
@@ -71,9 +75,19 @@ class CowrieTelnetTransport(TelnetTransport, TimeoutMixin):
         TelnetTransport.connectionLost(self, reason)
         duration = time.time() - self.startTime
         log.msg(
-            eventid="cowrie.session.closed",
-            format="Connection lost after %(duration)d seconds",
-            duration=duration,
+            type="close",
+            src_ip=self.transport.getPeer().host,
+            src_port=self.transport.getPeer().port,
+            dest_ip=self.transport.getHost().host,
+            dest_port=self.transport.getHost().port,
+            name="cowrie",
+            app="cowrie>",
+            uuid="<UUID>",
+            extend={
+                "session": self.transportId,
+                "sessionno":self.transport.sessionno,
+                "duration":duration,
+            },
         )
 
     def willChain(self, option):
